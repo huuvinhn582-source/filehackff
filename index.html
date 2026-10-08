@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Hack Free Fire</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+:root{
+  --den:#000; --den-nhe:#121212; --xam:#1f1f1f; --xam-nhat:#666;
+  --vang:#ffcc00; --cam:#ff6a00; --do:#ff2d55; --xanh:#00d4ff; --trang:#fff;
+  --vien:rgba(255,255,255,.08); --sang:rgba(255,204,0,.1);
+}
+body{
+  background:var(--den); min-height:100vh; padding:20px 15px;
+  background-image:radial-gradient(circle at top, rgba(255,106,0,.1) 0, transparent 50%),
+    radial-gradient(circle at bottom, rgba(0,212,255,.08) 0, transparent 50%);
+  background-attachment:fixed;
+}
+.khung{max-width:480px;margin:0 auto;}
+h1{color:var(--vang);text-align:center;font-size:22px;margin-bottom:5px;text-shadow:0 0 20px rgba(255,204,0,.4);}
+.phu-de{text-align:center;color:var(--xam-nhat);font-size:12px;margin-bottom:15px;}
+
+.tim-kiem{width:100%;padding:10px 14px;background:var(--xam);border:1px solid var(--vien);border-radius:8px;font-size:14px;color:var(--trang);margin-bottom:15px;}
+.tim-kiem::placeholder{color:var(--xam-nhat);}
+.tim-kiem:focus{outline:none;border-color:var(--vang);box-shadow:0 0 0 3px rgba(255,204,0,.15);}
+
+/* === BOX ZALO === */
+.khung-box-zalo{display:flex;gap:10px;margin-bottom:20px;}
+.box-zalo{flex:1;text-align:center;}
+.nut-zalo{display:block;background:linear-gradient(135deg,#0099ff,#00ccff);color:#fff;text-decoration:none;padding:10px 8px;border-radius:50px;font-weight:700;font-size:13px;box-shadow:0 4px 15px rgba(0,153,255,.3);transition:.3s;}
+.nut-zalo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,153,255,.4);}
+
+.nut-phai{text-align:right;margin-bottom:15px;}
+.btn-khoa{background:linear-gradient(135deg,#ff6a00,#ff2d55);color:#fff;border:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(255,106,0,.3);}
+.btn-khoa:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,106,0,.4);}
+
+.xem{display:block;}
+.tieu-de{color:var(--trang);font-size:17px;margin-bottom:12px;font-weight:700;}
+.danh-sach{background:var(--den-nhe);border-radius:12px;padding:15px;border:1px solid var(--vien);}
+.muc{padding:12px;border-radius:8px;background:var(--xam);margin-bottom:10px;border:1px solid transparent;}
+.muc.an{display:none;}
+.muc:hover{border-color:var(--vang);background:var(--sang);transform:translateY(-1px);box-shadow:0 2px 8px rgba(255,204,0,.1);}
+.ten-file{font-weight:700;color:var(--vang);font-size:14px;margin-bottom:4px;}
+.mo-ta{color:var(--xam-nhat);font-size:12px;margin-bottom:8px;line-height:1.4;}
+.nut-tai{background:linear-gradient(135deg,#00d4ff,#0099ff);color:#fff;border:none;padding:7px 14px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;margin-right:8px;}
+.nut-tai:hover{transform:scale(1.05);box-shadow:0 0 10px rgba(0,212,255,.4);}
+.nut-xoa{background:var(--do);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;}
+.nut-xoa:hover{background:#ff4d6d;transform:scale(1.05);}
+.trong{text-align:center;color:var(--xam-nhat);padding:30px 15px;}
+.khong-tim-thay{text-align:center;color:var(--do);padding:15px;display:none;font-size:13px;}
+
+.quan-ly{display:none;}
+.dang-nhap{background:#222;border-radius:12px;padding:20px 15px;border:1px solid var(--vien);}
+.dang-nhap h2{text-align:center;margin-bottom:15px;color:var(--vang);font-size:18px;font-weight:700;}
+.nhap{width:100%;padding:10px 12px;background:#2a2a2a;border:1px solid var(--vien);border-radius:6px;font-size:14px;margin-bottom:12px;color:var(--trang);}
+.nhap::placeholder{color:var(--xam-nhat);}
+.nhap:focus{outline:none;border-color:var(--vang);box-shadow:0 0 0 3px rgba(255,204,0,.15);}
+.btn-dn{width:100%;padding:10px;background:linear-gradient(135deg,#ff6a00,#ff2d55);color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(255,106,0,.3);}
+.btn-dn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(255,106,0,.4);}
+.sai{color:var(--do);text-align:center;margin-top:10px;display:none;font-size:13px;}
+
+.noi-dung{display:none;}
+.anh-khung{text-align:center;margin-bottom:15px;}
+.anh-tron{width:90px;height:90px;border-radius:50%;overflow:hidden;margin:0 auto 8px;border:2px solid var(--vang);box-shadow:0 0 10px rgba(255,204,0,.3);}
+.anh-tron img{width:100%;height:100%;object-fit:cover;}
+.btn-anh{background:var(--xanh);color:#fff;border:none;padding:6px 14px;border-radius:50px;cursor:pointer;font-size:13px;font-weight:700;}
+.btn-anh:hover{transform:scale(1.05);box-shadow:0 0 8px rgba(0,212,255,.4);}
+
+/* === KHUNG CHỌN FILE === */
+.khung-chon-file{background:#1a1a1a;border-radius:8px;padding:12px;margin-bottom:10px;border:1px solid var(--vien);}
+.tieu-de-khung{color:var(--vang);font-size:14px;font-weight:700;margin-bottom:8px;}
+.chon-file-khung{border:2px dashed var(--xam-nhat);border-radius:6px;padding:15px;text-align:center;cursor:pointer;transition:.3s;}
+.chon-file-khung:hover{border-color:var(--vang);background:rgba(255,204,0,.05);}
+.chon-file-khung p{font-size:13px;color:#888;}
+#chonFile,#chonAnh{display:none;}
+.ten-da-chon{color:var(--vang);font-size:13px;font-weight:600;margin-top:8px;display:block;}
+
+/* === KHUNG MÔ TẢ === */
+.khung-mo-ta{background:#1a1a1a;border-radius:8px;padding:12px;margin-bottom:10px;border:1px solid var(--vien);}
+.nhap-mota{min-height:70px;resize:none;font-size:13px;}
+
+.thieu{color:var(--do);text-align:center;margin:8px 0;display:none;font-size:13px;}
+.btn-luu{width:100%;padding:10px;background:var(--vang);color:#000;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+.btn-luu:hover{background:#ffdd33;transform:translateY(-1px);}
+.btn-thoat{width:100%;padding:9px;background:var(--xam);color:var(--trang);border:none;border-radius:6px;font-size:14px;cursor:pointer;margin-top:15px;border:1px solid var(--vien);}
+.btn-thoat:hover{background:#2a2a2a;}
+</style>
+</head>
+<body>
+<div class="khung">
+  <h1>🔥 FILE HACK FREE FIRE</h1>
+  <p class="phu-de">Chia sẻ file an toàn & nhanh</p>
+
+  <!-- === BOX ZALO === -->
+  <div class="khung-box-zalo">
+    <div class="box-zalo">
+      <a href="https://zalo.me/g/w8qsbiwz9t5dwqbcvkyt" target="_blank" class="nut-zalo">📦 Box 1</a>
+    </div>
+    <div class="box-zalo">
+      <a href="https://zalo.me/g/w8qsbiwz9t5dwqbcvkyt" target="_blank" class="nut-zalo">📦 Box 2</a>
+    </div>
+  </div>
+
+  <div class="nut-phai"><button class="btn-khoa" id="btnVao">🔐 Admin</button></div>
+
+  <div class="xem" id="khuXem">
+    <h2 class="tieu-de">📥 DANH SÁCH FILE</h2>
+    <input type="text" class="tim-kiem" id="timKiem" placeholder="🔍 Tìm file..." oninput="locFile()">
+    <div class="danh-sach" id="danhSach">
+      <p class="trong">Chưa có file nào được đăng</p>
+      <p class="khong-tim-thay" id="khongTim">❌ Không tìm thấy</p>
+    </div>
+  </div>
+
+  <div class="quan-ly" id="khuQuan">
+    <div class="dang-nhap" id="formDangNhap">
+      <h2>🔐 Đăng nhập Admin</h2>
+      <input type="password" id="tenDangNhap" class="nhap" placeholder="Tên đăng nhập">
+      <input type="password" id="matKhau" class="nhap" placeholder="Mật khẩu">
+      <button class="btn-dn" id="btnDangNhap">ĐĂNG NHẬP</button>
+      <p class="sai" id="loiSai">❌ Sai tài khoản hoặc mật khẩu!</p>
+    </div>
+
+    <div class="noi-dung" id="noiDungQuan">
+      <div class="anh-khung">
+        <div class="anh-tron"><img id="anhDaiDien" src="https://via.placeholder.com/90/121212/ffcc00?text=FF" alt="Admin"></div>
+        <label for="chonAnh" class="btn-anh">📷 Đổi ảnh</label>
+        <input type="file" id="chonAnh" accept="image/*">
+      </div>
+
+      <div class="khung-chon-file">
+        <h4 class="tieu-de-khung">📁 Chọn file</h4>
+        <label class="chon-file-khung" for="chonFile">
+          <p>Nhấn chọn file từ máy</p>
+        </label>
+        <input type="file" id="chonFile">
+        <p class="ten-da-chon" id="tenFile"></p>
+      </div>
+
+      <div class="khung-mo-ta">
+        <h4 class="tieu-de-khung">✍️ Mô tả</h4>
+        <textarea id="moTa" class="nhap nhap-mota" placeholder="Phiên bản, chức năng..."></textarea>
+      </div>
+
+      <p class="thieu" id="thieu">⚠️ Chọn file + viết mô tả!</p>
+      <button class="btn-luu" id="btnLuu">✅ LƯU FILE</button>
+      <button class="btn-thoat" id="btnThoat">ĐĂNG XUẤT</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TK = { ten: "hack ff", mk: "Iphone1234" };
+
+// === LƯU / LẤY DỮ LIỆU ===
+function luuDS(ds){ localStorage.setItem("danhSach", JSON.stringify(ds)); }
+function layDS(){ 
+  try{ return JSON.parse(localStorage.getItem("danhSach")||"[]"); }
+  catch{ return []; }
+}
+
+let fileChon = null;
+let danhSach = layDS();
+
+// === TÌM KIẾM ===
+window.locFile = function(){
+  const tukhoa = document.getElementById("timKiem").value.trim().toLowerCase();
+  let coKQ = false;
+  document.querySelectorAll(".muc").forEach(e=>{
+    const ten = e.dataset.ten.toLowerCase(), mota = e.dataset.mota.toLowerCase();
+    const hop = tukhoa==="" || ten.includes(tukhoa) || mota.includes(tukhoa);
+    e.classList.toggle("an", !hop);
+    if(hop && tukhoa) coKQ = true;
+  });
+  document.getElementById("khongTim").style.display = tukhoa && !coKQ && danhSach.length ? "block" : "none";
+};
+
+// === HIỂN THỊ DANH SÁCH + NÚT XÓA ===
+function hienThi(){
+  const khung = document.getElementById("danhSach");
+  khung.innerHTML = "";
+  if(!danhSach.length){
+    khung.innerHTML = '<p class="trong">Chưa có file nào được đăng</p>';
+    document.getElementById("timKiem").style.display = "none";
+    return;
+  }
+  document.getElementById("timKiem").style.display = "block";
+  const dangNhapAdmin = document.getElementById("noiDungQuan").style.display === "block";
+  danhSach.forEach((f,i)=>{
+    const div = document.createElement("div");
+    div.className = "muc";
+    div.dataset.ten = f.ten;
+    div.dataset.mota = f.mota;
+    div.innerHTML = `
+      <p class="ten-file">🔥 ${f.ten}</p>
+      <p class="mo-ta">${f.mota}</p>
+      <div>
+        <a href="${f.duongDan}" download="${f.ten}" class="nut-tai">📥 Tải</a>
+        ${dangNhapAdmin ? `<button class="nut-xoa" data-i="${i}">🗑️ Xóa</button>` : ""}
+      </div>`;
+    khung.appendChild(div);
+  });
+  khung.innerHTML += '<p class="khong-tim-thay" id="khongTim">❌ Không tìm thấy</p>';
+  locFile();
+  
+  // === GÁN SỰ KIỆN NÚT XÓA ===
+  document.querySelectorAll(".nut-xoa").forEach(btn=>{
+    btn.onclick = function(){
+      const viTri = parseInt(this.getAttribute("data-i"));
+      if(confirm("Bạn có chắc muốn xóa file này?")){
+        danhSach.splice(viTri, 1);
+        luuDS(danhSach);
+        hienThi();
+        alert("✅ Đã xóa file thành công!");
+      }
+    };
+  });
+}
+
+// === NÚT VÀO ADMIN ===
+document.getElementById("btnVao").onclick = ()=>{
+  document.getElementById("khuXem").style.display = "none";
+  document.getElementById("khuQuan").style.display = "block";
+  document.getElementById("formDangNhap").style.display = "block";
+  document.getElementById("noiDungQuan").style.display = "none";
+  document.getElementById("loiSai").style.display = "none";
+  document.getElementById("tenDangNhap").value = "";
+  document.getElementById("matKhau").value = "";
+  resetForm();
+};
+
+// === ĐĂNG NHẬP ===
+document.getElementById("btnDangNhap").onclick = ()=>{
+  const t = document.getElementById("tenDangNhap").value;
+  const m = document.getElementById("matKhau").value;
+  if(t===TK.ten && m===TK.mk){
+    document.getElementById("formDangNhap").style.display = "none";
+    document.getElementById("noiDungQuan").style.display = "block";
+    hienThi(); // Gọi lại để hiện nút Xóa
+  }else{
+    document.getElementById("loiSai").style.display = "block";
+  }
+};
+
+// === ĐỔI ẢNH ===
+document.getElementById("chonAnh").onchange = e=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const r = new FileReader();
+  r.onload = d=>{
+    document.getElementById("anhDaiDien").src = d.target.result;
+    localStorage.setItem("anh", d.target.result);
+  };
+  r.readAsDataURL(f);
+};
+
+// === KHI MỞ TRANG ===
+window.onload = ()=>{
+  const anh = localStorage.getItem("anh");
+  if(anh) document.getElementById("anhDaiDien").src = anh;
+  hienThi();
+};
+
+// === CHỌN FILE ===
+document.getElementById("chonFile").onchange = e=>{
+  fileChon = e.target.files[0];
+  if(!fileChon) return;
+  document.getElementById("tenFile").textContent = "✅ Đã chọn: " + fileChon.name;
+  document.getElementById("thieu").style.display = "none";
+  document.getElementById("btnLuu").style.display = "block";
+};
+
+// === LƯU FILE ===
+document.getElementById("btnLuu").onclick = ()=>{
+  const mota = document.getElementById("moTa").value.trim();
+  if(!fileChon || !mota){
+    document.getElementById("thieu").style.display = "block";
+    return;
+  }
+  document.getElementById("thieu").style.display = "none";
+  danhSach.unshift({
+    ten: fileChon.name,
+    mota: mota,
+    duongDan: URL.createObjectURL(fileChon)
+  });
+  luuDS(danhSach);
+  alert("✅ Đăng file thành công!");
+  resetForm();
+  hienThi();
+};
+
+function resetForm(){
+  fileChon = null;
+  document.getElementById("tenFile").textContent = "";
+  document.getElementById("moTa").value = "";
+  document.getElementById("btnLuu").style.display = "none";
+  document.getElementById("thieu").style.display = "none";
+}
+
+// === ĐĂNG XUẤT ===
+document.getElementById("btnThoat").onclick = ()=>{
+  document.getElementById("khuQuan").style.display = "none";
+  document.getElementById("khuXem").style.display = "block";
+  resetForm();
+  hienThi();
+};
+</script>
+</body>
+  </html>
+      
